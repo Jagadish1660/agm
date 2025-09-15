@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AGM Bisi - Admin</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="topbar">
+  <h1>AGM Bisi - Admin</h1>
+  <nav>
+    <a href="index.html">Home Page</a>
+    <a href="admin.html">Admin Login</a>
+  </nav>
+</header>
+
+<main class="container">
+  <!-- login -->
+  <section class="card" id="loginCard">
+    <h2>Admin Login</h2>
+    <form id="adminLoginForm">
+      <input type="password" id="adminPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p class="muted">Default password: <code>admin123</code></p>
+  </section>
+
+  <!-- admin area -->
+  <section class="card" id="adminArea" style="display:none">
+    <div class="admin-row">
+      <!-- MEMBER PANEL -->
+      <div class="panel">
+        <h3>Add Member</h3>
+        <form id="addMemberForm">
+          <input id="mName" placeholder="Full name" required />
+          <input id="mAge" type="number" placeholder="Age (optional)" />
+          <input id="mAmount" type="number" placeholder="Weekly Amount (₹)" required />
+          <input id="mPhone" placeholder="Phone (10 digits)" required />
+          <button type="submit">Add Member</button>
+        </form>
+        <hr/>
+        <h3>Members List</h3>
+        <div id="membersList"></div>
+      </div>
+
+      <!-- FINANCE PANEL -->
+      <div class="panel">
+        <h3>Balance</h3>
+        <input id="balanceInput" type="number" placeholder="Amount" />
+        <div style="margin-top:8px;">
+          <button id="setBalanceBtn">Set Balance</button>
+          <button id="addBalanceBtn">Add Balance</button>
+        </div>
+        <div style="margin-top:8px;">
+          <div>Current Balance: ₹<span id="adminBalanceView">0</span></div>
+        </div>
+
+        <hr/>
+
+        <h3>Loans</h3>
+        <form id="loanForm">
+          <input id="loanName" placeholder="Loan to (name)" />
+          <input id="loanAmount" type="number" placeholder="Amount" />
+          <input id="loanDate" type="date" />
+          <button type="submit">Add Loan</button>
+        </form>
+        <div id="loanList"></div>
+
+        <hr/>
+
+        <h3>Expenses</h3>
+        <form id="expenseForm">
+          <input id="expName" placeholder="Expense name" />
+          <input id="expAmount" type="number" placeholder="Amount" />
+          <button type="submit">Add Expense</button>
+        </form>
+        <div id="expenseList"></div>
+
+        <hr/>
+      </div>
+    </div>
+    <hr/>
+
+    <div class="panel">
+      <h3>Weekly Payments Grid (Sundays until 16 Aug 2026)</h3>
+      <div style="margin-bottom:8px;">
+  <button id="markAllForAll">Mark All Paid (All Members)</button>
+  <button id="unmarkAllForAll">Unmark All (All Members)</button>
+  <button id="markThisWeekForAll">Mark This Week (All Members)</button>
+  <button id="unmarkThisWeekForAll">Unmark This Week (All Members)</button>
+  <button id="exportCSV">Export Payments CSV</button>
+  <button id="clearAll" class="danger">Clear ALL Data</button>
+</div>
+      <div id="gridWrap" class="table-wrap"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>Admin - Prototype (client-only)</small>
+</footer>
+
+<script src="utils.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
